@@ -13,6 +13,7 @@ Vue.use(VueRouter)
 const router=new VueRouter({
   routes,
   mode:routerMode,
+
   strict:process.env.NODE_ENV!=='production',
     //scrollBehavior 这个整体做的是：在路由的history模式下，一些列表页利用缓存模式来
     // 来记录位置(一般返回不刷新，前进刷新),一般用scrollBehavior,
@@ -28,7 +29,7 @@ const router=new VueRouter({
 　　　　　　return savedPosition;
 　　　　} 
     else{
-      if (from,meta,keepAlive) {
+      if (from.meta.keepAlive) {
         from.meta.savedPosition=document.body.scrollTop;
       }
       return {x:0,y:to.meta.savedPosition||0}
